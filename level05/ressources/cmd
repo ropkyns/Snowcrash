@@ -1,0 +1,13 @@
+find / -user level05 2>/dev/null
+>/usr/sbin/openarenaserver
+
+cat /usr/sbin/openarenaserver
+>#!/bin/sh
+>
+>for i in /opt/openarenaserver/* ; do
+>	(ulimit -t 5; bash -x "$i")
+>	rm -f "$i"
+>done
+
+je sais qu'on peut voir que c'est un script qui est exec toutes les 2min mais je sais plus où et j'ai pas encore
+cherché mais oklm
