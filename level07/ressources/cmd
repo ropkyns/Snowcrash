@@ -1,0 +1,3 @@
+après analyse du fichier level07 avec gdb et ghidra j'arrive à la conclusion qu'il cherche LOGNAME
+dans les env puis le print et enfin l'execute dans la fonction system mais en faisait un export
+LOGNAME le print change bien pour getflag mais aucun flag ni message apparait...
