@@ -1,0 +1,2 @@
+Y faut juste faire un script qui permet de reverse l'encoder 
+un truc qui fait ca : decoded[i] = input[i] - i
