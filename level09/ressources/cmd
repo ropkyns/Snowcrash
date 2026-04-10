@@ -1,3 +1,5 @@
+en étudiant le fichier binaire et l'output renvoyé on se rend compte qu'il décale le caractère ascii par sa position dans la string. On peut alors faire un script pour inverser le processus.
+
 nano script.py
 python script.py /home/user/level09/token
 >f3iji1ju5yuevaus41q1afiuq�

