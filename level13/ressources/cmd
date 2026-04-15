@@ -1,0 +1,40 @@
+>ls
+    level13
+
+>./level13
+    UID 2013 started us but we we expect 4242
+
+Quand on telecharge le fichier sur notre pc, on peut utiliser gidrah pour check ce qu'il y a dedans
+On peut voir qu'il faut changer la variable _Var1 pour lui donner la valeur 4242
+
+>gdb level13
+    >disas main
+        [...]
+        0x0804859a <+14>:	cmp    $0x1092,%eax
+        0x0804859f <+19>:	je     0x80485cb <main+63>
+        0x080485a1 <+21>:	call   0x8048380 <getuid@plt>
+        [...]
+    Ici on peut voir que c'est %eax qu'il faut changer en 4242
+
+    >b getuid (breakpoint sur getuid)
+
+    >step
+        Single stepping until exit from function getuid,
+        which has no line number information.
+        0x0804859a in main ()
+
+    >print $eax
+        $1 = 2013
+    
+    >set $eax=4242
+    >print $eax
+        $2 = 4242
+
+    >step
+        Single stepping until exit from function main,
+        which has no line number information.
+        your token is 2A31L79asukciNyi8uppkEuSx
+        0xb7e454d3 in __libc_start_main () from /lib/i386-linux-gnu/libc.so.6
+
+
+your token is 2A31L79asukciNyi8uppkEuSx
