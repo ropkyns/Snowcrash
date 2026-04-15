@@ -1,0 +1,70 @@
+>ls
+
+On peut voir que nous n'avons aucun fichier a disposition, et en cherchant un peu plus, on peut voir qu'il n'y a rien
+Cependant, on peut maintenant directement acceder au fichier getflag ( /bin/getflag )
+
+>gdb /bin/getflag
+
+>disas main
+    0x08048946 <+0>:	push   %ebp
+    0x08048947 <+1>:	mov    %esp,%ebp
+    0x08048949 <+3>:	push   %ebx
+    => 0x0804894a <+4>:	and    $0xfffffff0,%esp
+    0x0804894d <+7>:	sub    $0x120,%esp
+    0x08048953 <+13>:	mov    %gs:0x14,%eax
+    0x08048959 <+19>:	mov    %eax,0x11c(%esp)
+    0x08048960 <+26>:	xor    %eax,%eax
+    0x08048962 <+28>:	movl   $0x0,0x10(%esp)
+    0x0804896a <+36>:	movl   $0x0,0xc(%esp)
+    0x08048972 <+44>:	movl   $0x1,0x8(%esp)
+    0x0804897a <+52>:	movl   $0x0,0x4(%esp)
+    0x08048982 <+60>:	movl   $0x0,(%esp)
+    0x08048989 <+67>:	call   0x8048540 <ptrace@plt>
+    0x0804898e <+72>:	test   %eax,%eax
+    0x08048990 <+74>:	jns    0x80489a8 <main+98>
+    0x08048992 <+76>
+    [...]
+
+Il y a beaucoup de chose, mais on remarque qu'il y a un " paterne " qui se repette 15fois ( 15flags )
+Donc on cherche le dernier, et faison comme l'exercice 13
+
+>break main
+>run
+>disassemble
+
+ensuite si on check un peu tout les cas, on peut trouver qu'il y a une sequence de chiffre qui se suive
+3000, 3001, 3002, ..., 3014
+Nous voulons donc le 3014 pour le flag14
+
+[...]
+0x08048bb6 <+624>:	cmp    $0xbc6,%eax
+0x08048bbb <+629>:	je     0x8048de5 <main+1183>
+[...]
+
+Ces lignes nous dises que si on atteinds le 3014, on mets le poiteur directement dans cette partie
+
+[...]
+0x08048de5 <+1183>:  mov    0x804b060,%eax   ; charge stdout
+0x08048dea <+1188>:  mov    %eax,%ebx
+0x08048dec <+1190>:  movl   $0x8049220,(%esp) ; adresse d'une string chiffrée
+0x08048df3 <+1197>:  call   0x8048604 <ft_des> ; déchiffre le flag
+0x08048df8 <+1202>:  mov    %ebx,0x4(%esp)
+0x08048dfc <+1206>:  mov    %eax,(%esp)
+0x08048dff <+1209>:  call   0x8048530 <fputs@plt> ; affiche le flag
+[...]
+
+>set $eip=0x0x8048de5
+>continue
+
+Continuing.
+7QiHafiNa3HVozsaXkawuYrTstxbpABHD8CPnHJ
+*** stack smashing detected ***: /bin/getflag terminated
+[...]
+
+>su flag14
+7QiHafiNa3HVozsaXkawuYrTstxbpABHD8CPnHJ
+    Congratulation. Type getflag to get the key and send it to me the owner of this livecd :)
+
+>getflag
+    Check flag.Here is your token : 7QiHafiNa3HVozsaXkawuYrTstxbpABHD8CPnHJ
+
