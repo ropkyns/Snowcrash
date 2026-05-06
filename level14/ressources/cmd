@@ -25,14 +25,14 @@ Cependant, on peut maintenant directement acceder au fichier getflag ( /bin/getf
     0x08048992 <+76>
     [...]
 
-Il y a beaucoup de chose, mais on remarque qu'il y a un " paterne " qui se repette 15fois ( 15flags )
-Donc on cherche le dernier, et faison comme l'exercice 13
+Il y a beaucoup de choses, mais on remarque qu'il y a un " paterne " qui se repete 15fois ( 15flags )
+Donc on cherche le dernier, et faisons comme l'exercice 13
 
 >break main
 >run
 >disassemble
 
-ensuite si on check un peu tout les cas, on peut trouver qu'il y a une sequence de chiffre qui se suive
+ensuite si on check un peu tous les cas, on peut trouver qu'il y a une sequence de chiffres qui se suit
 3000, 3001, 3002, ..., 3014
 Nous voulons donc le 3014 pour le flag14
 
@@ -41,7 +41,11 @@ Nous voulons donc le 3014 pour le flag14
 0x08048bbb <+629>:	je     0x8048de5 <main+1183>
 [...]
 
-Ces lignes nous dises que si on atteinds le 3014, on mets le poiteur directement dans cette partie
+Ces lignes nous disent que si on atteint le 3014, on met le poiteur directement dans cette partie
+On set le $eip ( pointeur d'instruction ) sur le bloc de code du level14 pour que ce qu'il y a dedans s'execute
+
+>set $eip=0x8048de5
+>continue
 
 [...]
 0x08048de5 <+1183>:  mov    0x804b060,%eax   ; charge stdout
@@ -53,8 +57,6 @@ Ces lignes nous dises que si on atteinds le 3014, on mets le poiteur directement
 0x08048dff <+1209>:  call   0x8048530 <fputs@plt> ; affiche le flag
 [...]
 
->set $eip=0x0x8048de5
->continue
 
 Continuing.
 7QiHafiNa3HVozsaXkawuYrTstxbpABHD8CPnHJ
