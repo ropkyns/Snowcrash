@@ -55,7 +55,7 @@ Ensuite il faut que l'on fasse une autre boucle infini pour utiliser level10 sur
 
 >chmod 777 script.sh script2.sh
 
-Et pour finir, il faut lancer un avant de lancer les 2 scripts sur 2 differents terminals : nc -lk 6996 ( car c'est sur ce port ci que le resultat va sortir, on peut le voir dans le level10 via gidrah )
+Et pour finir, il faut lancer un nc avant de lancer les 2 scripts sur 2 differents terminals : nc -lk 6969 ( car c'est sur ce port ci que le resultat va sortir, on peut le voir dans le level10 via gidrah )
 
 >nc -lk 6969
     [...]

