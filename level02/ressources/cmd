@@ -1,8 +1,18 @@
 Dans un terminal hors de la VM pour pouvoir telecharger level02.pcap :
 >scp -P 4242 level02@192.168.56.101:/home/user/level02/level02.pcap .
 
->chmod +r level02.pcap
+>chmod 777 level02.pcap
 
 level02.pcap > wireshark > follow password packet
 
-ft_waNDReL0L
+Show as Hex dump : on voit que le " . " correspond a l'ascii 7f qui est egal a " BackSpace " donc que l'on voir un point, ou doit supprimer un caractere. Sauf pour le dernier " . " qui est egal a 0d donc a un retour chariot.
+
+Donc ce password la : ft_wandr...NDRel.L0L
+Si on le decode, il nous donne : ft_waNDReL0L
+
+>su flag02
+    >ft_waNDReL0L
+        Don't forget to launch getflag !
+
+>getflag
+    Check flag.Here is your token : kooda2puivaav1idi4f57q8iq

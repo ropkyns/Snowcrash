@@ -18,6 +18,7 @@ On peut voir qu'il faut changer la variable _Var1 pour lui donner la valeur 4242
 
     >b getuid (breakpoint sur getuid)
 
+    >run
     >step
         Single stepping until exit from function getuid,
         which has no line number information.

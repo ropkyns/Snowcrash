@@ -20,5 +20,5 @@
 
 >echo "getflag > /tmp/flag" > /opt/openarenaserver/script.sh
 
->cat /tmp/flag
+>cat /tmp/flag ( attendre un peu si ca n'affiche rien )
 Check flag.Here is your token : viuaaale9huek52boumoomioc

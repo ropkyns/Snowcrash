@@ -8,4 +8,11 @@ https://www.openwall.com/john/
 
 42hDRfypTqqnw > john-bleeding-jumbo/run/password.txt
 
->cd ../run && john password.txt
+>cd ../run && ./john password.txt
+
+>su flag01
+    >abcdefg
+        Don't forget to launch getflag !
+
+>getflag
+        Check flag.Here is your token : f2av5il02puano7naaf6adaaf

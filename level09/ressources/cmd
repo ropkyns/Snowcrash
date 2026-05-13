@@ -4,3 +4,9 @@ nano script.py
 python script.py /home/user/level09/token
 >f3iji1ju5yuevaus41q1afiuq�
 ###ne pas prendre le dernier char###
+
+>su flag09
+    Don't forget to launch getflag !
+
+>getflag
+    Check flag.Here is your token : s5cAJpM8ev6XHw998pRWG728z
